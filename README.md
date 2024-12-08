@@ -80,6 +80,7 @@ npm run dev
 # Open the app in your browser
 http://localhost:3000
 
+```
 
 ## 🔧 Development Workflow
 
@@ -102,4 +103,3 @@ This project is licensed under the [MIT License](LICENSE).
 ---
 
 Built with ❤️ by Abbo Adamou.
-```
