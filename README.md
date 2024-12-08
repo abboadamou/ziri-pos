@@ -92,14 +92,6 @@ http://localhost:3000
 
 [Link to the live application](https://ziripos.abboadamou.com)
 
-## 🤝 Contributions
-
-We welcome contributions to improve this project. Feel free to fork the repository and submit pull requests. Please ensure you adhere to our [contribution guidelines](CONTRIBUTING.md).
-
-## 📜 License
-
-This project is licensed under the [MIT License](LICENSE).
-
 ---
 
-Built with ❤️ by Abbo Adamou.
+Built with ❤️ by [Abbo Adamou](https://abboadamou.com).
