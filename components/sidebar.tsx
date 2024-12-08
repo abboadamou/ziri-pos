@@ -41,10 +41,10 @@ const Sidebar = () => {
   ];
 
   return (
-    <nav className="w-20  min-h-screen flex flex-col items-center py-3 gap-5 divide-y">
+    <nav className="fixed bottom-0 border-t md:border-none bg-white border-base/30 md:static md:w-20 w-full md:min-h-screen flex md:flex-col items-center md:py-3 gap-5 md:divide-y px-3 md:px-0">
       <Logo />
-      <div className="flex justify-start flex-col flex-1 py-3">
-        <ul className="grid gap-3">
+      <div className="flex justify-start md:flex-col flex-1 py-3">
+        <ul className="flex flex-row md:flex-col gap-3">
           {NavLinks.map((link) => (
             <NavLink
               key={link.href}
@@ -55,7 +55,7 @@ const Sidebar = () => {
           ))}
         </ul>
       </div>
-      <ul className="pt-3 space-y-3">
+      <ul className="md:pt-3 md:gap-y-3 gap-x-3 flex md:flex-col">
         <NavLink icon={Settings} label="Settings" href="/settings" />
         <NavLink icon={LogOut} label="Sign out" href="" />
       </ul>

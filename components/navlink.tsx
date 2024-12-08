@@ -20,19 +20,19 @@ export const NavLink = ({
       <Link
         href={href}
         className={cn(
-          "size-14 flex items-center justify-center flex-col rounded-lg hover:bg-primary group",
+          "md:size-16 size-10 flex items-center justify-center flex-col rounded-sm md:rounded-lg hover:bg-primary group",
           isActive && "bg-primary"
         )}
       >
         <Icon
           className={cn(
-            "size-7 group-hover:stroke-white stroke-[1px]",
-            isActive && "stroke-white"
+            "size-5 md:size-7 group-hover:stroke-base stroke-base group-hover:stroke-[1.5px] stroke-[1.8px] md:stroke-[1px]",
+            isActive && "stroke-base stroke-[1.5px]"
           )}
         />
         <span
           className={cn(
-            "text-black text-[7px] font-medium mt-1 leading-none uppercase group-hover:text-white",
+            "hidden md:block text-black text-[8px] font-medium mt-1 leading-none uppercase group-hover:text-white",
             isActive && "text-white"
           )}
         >
