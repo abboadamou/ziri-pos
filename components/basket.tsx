@@ -1,24 +1,11 @@
 import { Settings } from "lucide-react";
 import Image from "next/image";
 import { Button } from "./ui/button";
+import { basketItems } from "@/constants/data";
 
 const Basket = () => {
-  const basketItems = [
-    {
-      image: "/assets/img/products/battery-5kva-4.png",
-      name: "Battery Lithium Life 5000W",
-      price: "300,00",
-      quantity: 1,
-    },
-    {
-      image: "/assets/img/products/battery-2000w-1.png",
-      name: "Battery Lithium Life 2000W",
-      price: "300,00",
-      quantity: 1,
-    },
-  ];
   return (
-    <div className="hidden md:flex md:w-80 lg:w-96 bg-white px-4 py-5 md:flex-col">
+    <div className="hidden lg:flex-col lg:flex fixed top-0 right-0 lg:w-96 bg-white px-4 py-5 z-10 min-h-screen">
       {/* Checkout header */}
       <div className="flex items-center justify-between">
         <h2 className="text-lg text-primary font-bold">Current Order</h2>

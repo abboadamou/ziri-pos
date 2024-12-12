@@ -41,7 +41,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <nav className="fixed bottom-0 border-t md:border-none bg-white border-base/30 md:static md:w-20 w-full md:min-h-screen flex md:flex-col items-center md:py-3 gap-5 md:divide-y px-3 md:px-0">
+    <nav className="fixed z-10 bottom-0 border-t md:border-none bg-white border-base/30 md:left-0 md:top-0 md:w-20 w-full md:min-h-screen flex md:flex-col items-center md:py-3 gap-5 md:divide-y px-3 md:px-0">
       <Logo />
       <div className="flex justify-start md:flex-col flex-1 py-3">
         <ul className="flex flex-row md:flex-col gap-3">
