@@ -9,7 +9,7 @@ interface ProductCardProps {
 }
 const ProductCard = ({ name, image, price }: ProductCardProps) => {
   return (
-    <div className="bg-white p-4 rounded-md md:shadow-md md:shadow-black/5 relative">
+    <div className="bg-white p-4 rounded-md shadow  relative cursor-pointer">
       <div className="relative rounded-lg overflow-hidden xl:h-[250px] lg:h-[220px] h-[200px] bg-gray-50">
         <Image
           src={image}
