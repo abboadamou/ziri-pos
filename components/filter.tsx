@@ -31,7 +31,7 @@ const Filter = () => {
   });
   return (
     <div className="flex items-center gap-3 overflow-hidden pt-1 md:pt-3">
-      <div className="mr-2 flex items-center gap-1 h-10 md:h-12 rounded-sm border border-base px-5 py-1 pr-5 text-sm lg:font-light">
+      <div className="mr-1 flex items-center gap-1 h-10 md:h-12 rounded-sm border border-base px-3 py-1 pr-4 text-sm lg:font-light">
         <Settings2 className="size-4 stroke-2 stroke-base" /> Filter
       </div>
       <div className="hide-scrollbar flex w-[90%] items-center gap-3 overflow-x-auto py-2 lg:py-5">

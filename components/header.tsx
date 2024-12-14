@@ -17,20 +17,20 @@ const Header = () => {
           </p>
         </div>
         <div className="flex-1 flex">
-          <div className="flex bg-white group items-center rounded-md overflow-hidden border md:h-12 lg:max-w-sm ml-auto flex-1">
-            <Search className="stroke-1 p-1.5 size-8 translate-x-3" />
+          <div className="flex bg-white shadow group items-center rounded-md overflow-hidden md:h-12 lg:max-w-sm ml-auto flex-1">
+            <Search className="stroke-1 p-1.5 size-8 translate-x-3 stroke-base" />
 
             <Input
               placeholder="Search product..."
-              className=" shadow-transparent md:h-12 focus-visible:ring-0 border-transparent"
+              className="md:h-12 focus-visible:ring-0 border-transparent shadow-none"
             />
           </div>
           <Button
-            className="size-10 md:size-12 ml-2 shrink-0 shadow-none"
+            className="size-10 md:size-12 ml-2 shrink-0 shadow border-transparent"
             variant={"outline"}
             size={"icon"}
           >
-            <FilterIcon />
+            <FilterIcon className="stroke-2 stroke-base" />
           </Button>
         </div>
       </div>
