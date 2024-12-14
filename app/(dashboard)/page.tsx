@@ -1,7 +1,6 @@
 import { LoadingSkeleton } from "@/components/loading-skeleton";
 import ProductCard from "@/components/product-card";
 import { products } from "@/constants/data";
-import { Product } from "@/types";
 import { Suspense } from "react";
 
 export default async function Home({
