@@ -1,9 +1,24 @@
+"use client";
 import { Settings } from "lucide-react";
 import Image from "next/image";
 import { Button } from "./ui/button";
-import { basketItems } from "@/constants/data";
+// import { basketItems } from "@/constants/data";
+import useBasketStore from "@/store/store";
+import { useEffect, useState } from "react";
+import { Product } from "@/types";
 
 const Basket = () => {
+  const [isClient, setIsClient] = useState(false);
+  const groupedItems = useBasketStore((state) => state.getGroupedItems());
+  useEffect(() => {
+    setIsClient(true);
+  }, [isClient]);
+
+  if (!isClient) {
+    return null;
+  }
+
+  console.log(useBasketStore.getState().getTotalPrice().toFixed(2));
   return (
     <div className="hidden lg:flex-col lg:flex fixed top-0 right-0 lg:w-96 bg-white px-4 py-5 z-10 min-h-screen">
       {/* Checkout header */}
@@ -13,20 +28,14 @@ const Basket = () => {
       </div>
       <div className="mt-10 flex flex-col justify-between flex-1">
         {/* Product card checkout */}
-        <div className="flex flex-col gap-3">
-          {basketItems.map((item, index) => (
-            <BasketItem
-              key={index}
-              name={item.name}
-              price={item.price}
-              image={item.image}
-              quantity={item.quantity}
-            />
+        <div className="flex flex-col gap-3 overflow-hidden">
+          {groupedItems?.map((item) => (
+            <BasketItem key={item?.product?.id} product={item?.product} />
           ))}
         </div>
 
         {/* Checkout summary */}
-        <div>
+        <div className="sticky bottom-4 w-full bg-white pt-4">
           {/* Checkout total */}
           <div className="bg-gray-100/60 rounded-lg p-4 py-5 relative">
             <div className="flex justify-between items-center">
@@ -47,12 +56,23 @@ const Basket = () => {
                 $595,00
               </span>
             </div>
+            <div className="flex justify-between items-center">
+              <p className="text-gray-500/80 text-sm">Items</p>
+              <span className="font-semibold text-black/80 text-sm">
+                {groupedItems?.reduce(
+                  (total, item) => total + item.quantity,
+                  0
+                )}
+              </span>
+            </div>
             <hr className="my-5" />
             <div className="size-8 bg-white rounded-full absolute bottom-12 -right-4" />
             <div className="size-8 bg-white rounded-full absolute bottom-12 -left-4" />
             <div className="flex justify-between items-center">
               <p className="text-black/90">Total</p>
-              <span className="font-semibold text-black">$595,00</span>
+              <span className="font-semibold text-black">
+                ${useBasketStore.getState().getTotalPrice().toFixed(2)}
+              </span>
             </div>
           </div>
 
@@ -71,21 +91,18 @@ const Basket = () => {
 
 export default Basket;
 
-const BasketItem = ({
-  name,
-  price,
-  image,
-  quantity,
-}: {
-  name: string;
-  price: string;
-  image: string;
-  quantity: number;
-}) => {
+const BasketItem = ({ product }: { product: Product }) => {
+  const { removeItem, addItem, getItemCount } = useBasketStore();
+  const { id, name, price, image } = product;
   return (
     <div className="gap-3 items-center flex h-20">
       <div className="relative aspect-square rounded-lg overflow-hidden h-20 bg-gray-100/60">
-        <Image src={image} fill className="object-cover" alt="product" />
+        <Image
+          src={image || "/assets/img/products/battery/battery-5kwh.png"}
+          fill
+          className="object-cover"
+          alt="product"
+        />
       </div>
       <div className="flex-1 flex flex-col h-full justify-between py-2">
         <p className="font-bold text-sm">{name}</p>
@@ -93,14 +110,16 @@ const BasketItem = ({
           <span className="font-bold text-base text-[17px]">${price}</span>
           <div className="flex gap-2 items-center">
             <Button
+              onClick={() => removeItem(id)}
               className="size-6 text-base border-base hover:bg-base hover:text-white rounded-sm"
               variant={"outline"}
               size={"icon"}
             >
               -
             </Button>
-            <span className="text-sm text-gray-500">{quantity}</span>
+            <span className="text-sm text-gray-500">{getItemCount(id)}</span>
             <Button
+              onClick={() => addItem(product)}
               className="size-6 text-base border-base hover:bg-base hover:text-white rounded-sm"
               variant={"outline"}
               size={"icon"}

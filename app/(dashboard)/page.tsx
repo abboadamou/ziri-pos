@@ -1,6 +1,7 @@
 import { LoadingSkeleton } from "@/components/loading-skeleton";
 import ProductCard from "@/components/product-card";
 import { products } from "@/constants/data";
+import { Product } from "@/types";
 import { Suspense } from "react";
 
 export default async function Home({
@@ -22,7 +23,7 @@ export default async function Home({
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-16 md:mb-0 px-4 lg:px-5 pt-3">
       <Suspense fallback={<LoadingSkeleton />} key={filter}>
         {displayedProducts?.map((product) => (
-          <ProductCard key={product?.id} {...product} />
+          <ProductCard key={product?.id} product={product} />
         ))}
       </Suspense>
     </div>
