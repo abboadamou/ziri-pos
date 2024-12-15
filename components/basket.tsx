@@ -41,19 +41,25 @@ const Basket = () => {
             <div className="flex justify-between items-center">
               <p className="text-gray-500/80 text-sm">Subtotal</p>
               <span className="font-semibold text-black/80 text-sm">
-                $600,00
+                ${useBasketStore.getState().getTotalPrice().toFixed(2)}
               </span>
             </div>
             <div className="flex justify-between items-center">
               <p className="text-gray-500/80 text-sm">Discount sales</p>
               <span className="font-semibold text-black/80 text-sm">
-                -$5,00
+                -$0,00
               </span>
             </div>
             <div className="flex justify-between items-center">
               <p className="text-gray-500/80 text-sm">Total sales tax</p>
               <span className="font-semibold text-black/80 text-sm">
-                $595,00
+                $
+                {typeof useBasketStore.getState().getTotalPrice() === "number"
+                  ? (
+                      (useBasketStore.getState().getTotalPrice() as number) *
+                      0.06
+                    ).toFixed(2)
+                  : 0}
               </span>
             </div>
             <div className="flex justify-between items-center">
@@ -71,7 +77,14 @@ const Basket = () => {
             <div className="flex justify-between items-center">
               <p className="text-black/90">Total</p>
               <span className="font-semibold text-black">
-                ${useBasketStore.getState().getTotalPrice().toFixed(2)}
+                $
+                {typeof useBasketStore.getState().getTotalPrice() === "number"
+                  ? (
+                      (useBasketStore.getState().getTotalPrice() as number) +
+                      (useBasketStore.getState().getTotalPrice() as number) *
+                        0.06
+                    ).toFixed(2)
+                  : 0}
               </span>
             </div>
           </div>
