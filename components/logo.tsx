@@ -5,7 +5,7 @@ const Logo = () => {
   return (
     <Link
       href="/"
-      className="hidden md:flex size-14 items-center justify-center flex-col"
+      className="hidden lg:flex size-14 items-center justify-center flex-col"
     >
       <div className="relative size-9">
         <Image src="assets/img/logo.svg" alt="logo" fill priority />

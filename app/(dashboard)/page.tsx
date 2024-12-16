@@ -19,7 +19,7 @@ export default async function Home({
   const displayedProducts = getFilteredProducts(filter);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-16 md:mb-0 px-4 lg:px-5 pt-3">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-16 md:mb-0 px-4 lg:px-5 pt-16 pb-5 md:py-5 md:pb-20 lg:pb-5">
       <Suspense fallback={<LoadingSkeleton />} key={filter}>
         {displayedProducts?.map((product) => (
           <ProductCard key={product?.id} product={product} />

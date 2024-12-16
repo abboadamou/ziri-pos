@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { NavLink } from "./navlink";
 import Logo from "./logo";
+import BasketMobile from "./basket-mobile";
 
 const Sidebar = () => {
   const NavLinks = [
@@ -41,10 +42,10 @@ const Sidebar = () => {
   ];
 
   return (
-    <nav className="fixed z-10 bottom-0 border-t md:border-none bg-white border-base/30 md:left-0 md:top-0 md:w-20 w-full md:min-h-screen flex md:flex-col items-center md:py-3 gap-5 md:divide-y px-3 md:px-0">
+    <nav className="fixed lg:sticky shrink-0 lg:h-svh lg:overflow-y-auto hide-scrollbar z-10 bottom-0 border-t lg:border-none bg-white border-base/20 lg:left-0 lg:top-0 lg:w-20 w-full flex lg:flex-col items-center lg:py-3 gap-3 lg:gap-5 lg:divide-y px-4 lg:px-0">
       <Logo />
-      <div className="flex justify-start md:flex-col flex-1 py-3">
-        <ul className="flex flex-row md:flex-col gap-3">
+      <div className="flex justify-start lg:flex-col flex-1 py-3">
+        <ul className="flex flex-row lg:flex-col gap-3">
           {NavLinks.map((link) => (
             <NavLink
               key={link.href}
@@ -55,10 +56,27 @@ const Sidebar = () => {
           ))}
         </ul>
       </div>
-      <ul className="md:pt-3 md:gap-y-3 gap-x-3 flex md:flex-col">
-        <NavLink icon={Settings} label="Settings" href="/settings" />
-        <NavLink icon={LogOut} label="Sign out" href="" />
+      <ul className="lg:pt-3 lg:gap-y-3 gap-x-3 flex lg:flex-col">
+        <NavLink
+          icon={Settings}
+          label="Settings"
+          href="/settings"
+          className="hidden lg:block"
+        />
+        <NavLink
+          icon={LogOut}
+          label="Sign out"
+          href=""
+          className="hidden lg:block"
+        />
+        {/* <NavLink
+          icon={ShoppingBag}
+          label="Basket"
+          href=""
+          className="block lg:hidden"
+        /> */}
       </ul>
+      <BasketMobile />
     </nav>
   );
 };
