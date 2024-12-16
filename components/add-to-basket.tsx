@@ -26,18 +26,14 @@ const AddToBasket = ({ product }: { product: Product }) => {
     }
   };
 
-  console.log({
-    itemCount: itemCount,
-    product: product.name,
-  });
   return (
     <button
-      className="group rounded-md absolute size-9 top-5 overflow-hidden right-5 bg-white shadow-sm cursor-pointer"
+      className="group rounded-md absolute size-8 lg:top-5 top-3 right-3 overflow-hidden lg:right-5 bg-white shadow-sm cursor-pointer"
       onClick={() => handleAddToBasket(product)}
     >
       <ShoppingBasketIcon
         className={cn(
-          "stroke-1 stroke-base p-1 size-9 group-hover:bg-base group-hover:stroke-white transition-all",
+          "stroke-1 stroke-base p-1 size-8  lg:group-hover:bg-base lg:group-hover:stroke-white transition-all",
           itemCount > 0 && "bg-base stroke-white",
           itemCount === 0 && "bg-white stroke-base"
         )}

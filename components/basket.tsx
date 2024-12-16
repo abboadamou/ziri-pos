@@ -6,8 +6,11 @@ import { Button } from "./ui/button";
 import useBasketStore from "@/store/store";
 import { useEffect, useState } from "react";
 import { Product } from "@/types";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 const Basket = () => {
+  const pathname = usePathname();
   const [isClient, setIsClient] = useState(false);
   const groupedItems = useBasketStore((state) => state.getGroupedItems());
   useEffect(() => {
@@ -18,24 +21,28 @@ const Basket = () => {
     return null;
   }
 
-  console.log(useBasketStore.getState().getTotalPrice().toFixed(2));
   return (
-    <div className="hidden lg:flex-col lg:flex fixed top-0 right-0 lg:w-96 bg-white px-4 py-5 z-10 min-h-screen">
+    <div
+      className={cn(
+        "hidden lg:flex-col lg:flex sticky top-0 right-0 lg:w-96 bg-white px-4 py-5 z-10 h-svh shrink-0 overflow-y-scroll overflow-x-hidden",
+        pathname.split("/")[1] !== "" && "lg:hidden"
+      )}
+    >
       {/* Checkout header */}
       <div className="flex items-center justify-between">
         <h2 className="text-lg text-primary font-bold">Current Order</h2>
         <Settings className="stroke-1 bg-base rounded-md stroke-white p-1.5 size-8" />
       </div>
-      <div className="mt-10 flex flex-col justify-between flex-1">
+      <div className="mt-10 overflow-hidden">
         {/* Product card checkout */}
-        <div className="flex flex-col gap-3 overflow-hidden">
+        <div className="flex flex-col gap-3 max-h-[550px] h-full overflow-y-auto py-1 hide-scrollbar">
           {groupedItems?.map((item) => (
             <BasketItem key={item?.product?.id} product={item?.product} />
           ))}
         </div>
 
         {/* Checkout summary */}
-        <div className="sticky bottom-4 w-full bg-white pt-4">
+        <div className="w-full bg-white pt-4 absolute bottom-5 pr-8">
           {/* Checkout total */}
           <div className="bg-gray-100/60 rounded-lg p-4 py-5 relative">
             <div className="flex justify-between items-center">
@@ -108,7 +115,7 @@ const BasketItem = ({ product }: { product: Product }) => {
   const { removeItem, addItem, getItemCount } = useBasketStore();
   const { id, name, price, image } = product;
   return (
-    <div className="gap-3 items-center flex h-20">
+    <div className="gap-3 items-center flex h-20 bg-gradient-to-t from-gray-50 rounded-md">
       <div className="relative aspect-square rounded-lg overflow-hidden h-20 bg-gray-100/60">
         <Image
           src={image || "/assets/img/products/battery/battery-5kwh.png"}

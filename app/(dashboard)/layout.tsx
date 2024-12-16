@@ -8,13 +8,15 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="antialiased relative flex flex-col md:flex-row max-w-[1920px] mx-auto min-h-screen w-full">
-      <Sidebar />
-      <div className="bg-gray-100/60 flex-1 py-5 md:ml-20 lg:mr-96 md:overflow-hidden">
-        <Header />
-        {children}
+    <div className="antialiased relative">
+      <div className="flex max-w-[1920px] mx-auto flex-col md:flex-row overflow-y-scroll">
+        <Sidebar />
+        <div className="bg-gray-100/60 h-svh flex flex-col lg:pb-5 flex-1 overflow-y-scroll hide-scrollbar">
+          <Header />
+          {children}
+        </div>
+        <Basket />
       </div>
-      <Basket />
     </div>
   );
 }
