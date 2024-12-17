@@ -28,7 +28,7 @@ const AddToBasket = ({ product }: { product: Product }) => {
 
   return (
     <button
-      className="group rounded-md absolute size-8 lg:top-5 top-3 right-3 overflow-hidden lg:right-5 bg-white shadow-sm cursor-pointer"
+      className="group rounded-md absolute size-8 top-3 right-3 overflow-hidden bg-white shadow-sm cursor-pointer"
       onClick={() => handleAddToBasket(product)}
     >
       <ShoppingBasketIcon

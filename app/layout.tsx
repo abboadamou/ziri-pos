@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "@/styles/globals.css";
 
@@ -11,6 +11,10 @@ const fontSans = Inter({
 export const metadata: Metadata = {
   title: "Ziri EPOS",
   description: "Ziri EPOS",
+};
+
+export const viewport: Viewport = {
+  maximumScale: 1,
 };
 
 export default function RootLayout({

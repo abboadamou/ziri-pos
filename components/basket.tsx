@@ -2,12 +2,12 @@
 import { Settings } from "lucide-react";
 import Image from "next/image";
 import { Button } from "./ui/button";
-// import { basketItems } from "@/constants/data";
 import useBasketStore from "@/store/store";
 import { useEffect, useState } from "react";
 import { Product } from "@/types";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import SetQuantity from "./set-quantity";
 
 const Basket = () => {
   const pathname = usePathname();
@@ -113,9 +113,9 @@ export default Basket;
 
 const BasketItem = ({ product }: { product: Product }) => {
   const { removeItem, addItem, getItemCount } = useBasketStore();
-  const { id, name, price, image } = product;
+  const { name, price, image } = product;
   return (
-    <div className="gap-3 items-center flex h-20 bg-gradient-to-t from-gray-50 rounded-md">
+    <div className="gap-3 items-center flex h-20  rounded-md">
       <div className="relative aspect-square rounded-lg overflow-hidden h-20 bg-gray-100/60">
         <Image
           src={image || "/assets/img/products/battery/battery-5kwh.png"}
@@ -127,26 +127,13 @@ const BasketItem = ({ product }: { product: Product }) => {
       <div className="flex-1 flex flex-col h-full justify-between py-2">
         <p className="font-bold text-sm">{name}</p>
         <div className="flex justify-between items-center">
-          <span className="font-bold text-base text-[17px]">${price}</span>
-          <div className="flex gap-2 items-center">
-            <Button
-              onClick={() => removeItem(id)}
-              className="size-6 text-base border-base hover:bg-base hover:text-white rounded-sm"
-              variant={"outline"}
-              size={"icon"}
-            >
-              -
-            </Button>
-            <span className="text-sm text-gray-500">{getItemCount(id)}</span>
-            <Button
-              onClick={() => addItem(product)}
-              className="size-6 text-base border-base hover:bg-base hover:text-white rounded-sm"
-              variant={"outline"}
-              size={"icon"}
-            >
-              +
-            </Button>
-          </div>
+          <span className="font-bold text-base text-[18px]">${price}</span>
+          <SetQuantity
+            item={{ product, quantity: 1 }}
+            addItem={addItem}
+            removeItem={removeItem}
+            getItemCount={getItemCount}
+          />
         </div>
       </div>
     </div>
