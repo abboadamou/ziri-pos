@@ -1,5 +1,4 @@
 import { BasketItem, Product } from "@/types";
-import { Button } from "./ui/button";
 
 interface SetQuantityProps {
   removeItem: (id: string) => void;
