@@ -7,8 +7,8 @@ interface Props {
 }
 const ProductCard = ({ product }: Props) => {
   return (
-    <div className="bg-white lg:p-4 p-2 rounded-md shadow  relative cursor-pointer">
-      <div className="relative rounded-lg overflow-hidden xl:h-[220px] lg:h-[180px] h-[140px] md:h-[140px] bg-gray-50">
+    <div className="bg-white p-2 rounded-md shadow  relative cursor-pointer">
+      <div className="relative rounded-md overflow-hidden xl:h-[220px] lg:h-[180px] h-[140px] md:h-[140px] bg-gray-50">
         <Image
           src={product.image}
           fill

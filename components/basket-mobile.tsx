@@ -12,6 +12,7 @@ import useBasketStore from "@/store/store";
 import { useEffect, useState } from "react";
 import { BasketItem } from "@/types";
 import Image from "next/image";
+import SetQuantity from "./set-quantity";
 
 const BasketMobile = () => {
   const [isClient, setIsClient] = useState(false);
@@ -54,27 +55,12 @@ const BasketMobile = () => {
                   </p>
                 </div>
               </div>
-              <div className="flex gap-2 items-center">
-                <Button
-                  onClick={() => removeItem(item?.product?.id)}
-                  className="size-7 text-base border-base hover:bg-base hover:text-white rounded-sm"
-                  variant={"outline"}
-                  size={"icon"}
-                >
-                  -
-                </Button>
-                <span className="text-sm text-gray-500">
-                  {getItemCount(item?.product?.id)}
-                </span>
-                <Button
-                  onClick={() => addItem(item?.product)}
-                  className="size-7 text-base border-base hover:bg-base hover:text-white rounded-sm"
-                  variant={"outline"}
-                  size={"icon"}
-                >
-                  +
-                </Button>
-              </div>
+              <SetQuantity
+                item={item}
+                removeItem={removeItem}
+                addItem={addItem}
+                getItemCount={getItemCount}
+              />
             </li>
           ))}
         </ul>
