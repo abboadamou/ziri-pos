@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import { ShoppingBagIcon } from "lucide-react";
 import {
   Drawer,
   DrawerContent,
@@ -7,11 +10,8 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { Button } from "./ui/button";
-import { ShoppingBagIcon } from "lucide-react";
 import useBasketStore from "@/store/store";
-import { useEffect, useState } from "react";
 import { BasketItem } from "@/types";
-import Image from "next/image";
 import SetQuantity from "./set-quantity";
 
 const BasketMobile = () => {
@@ -46,6 +46,7 @@ const BasketMobile = () => {
                   className="bg-slate-100 rounded-sm"
                   alt={item?.product?.name as string}
                   width={50}
+                  priority
                   height={50}
                 />
                 <div>
