@@ -119,6 +119,7 @@ const BasketItem = ({ product }: { product: Product }) => {
       <div className="relative aspect-square rounded-lg overflow-hidden h-20 bg-gray-100/60">
         <Image
           src={image || "/assets/img/products/battery/battery-5kwh.png"}
+          priority
           fill
           className="object-cover"
           alt="product"
